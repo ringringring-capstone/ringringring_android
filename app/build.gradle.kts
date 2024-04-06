@@ -33,9 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    val glideVersion = "4.16.0"
+    val fragmentVersion = "1.6.2"
+    val CoroutineVersion = "1.3.9"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -45,4 +51,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+
+    //Fragment
+    implementation ("androidx.fragment:fragment-ktx:$fragmentVersion")
+
+    //Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutineVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutineVersion")
 }
