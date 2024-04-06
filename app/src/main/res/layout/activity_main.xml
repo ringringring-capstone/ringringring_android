@@ -43,6 +43,6 @@
       app:tint="@color/white"
       app:backgroundTint="@color/main_color"
       app:srcCompat="@drawable/ic_home"
-      app:layout_anchor="@id/main_bottom_appBar"/>
+      app:layout_anchor="@id/main_bottom_appBar" />
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
