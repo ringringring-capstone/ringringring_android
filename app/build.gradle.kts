@@ -43,6 +43,8 @@ dependencies {
     val fragmentVersion = "1.6.2"
     val CoroutineVersion = "1.3.9"
     val navVersion = "2.7.7"
+    val retrofitVersion = "2.11.0"
+    val okhttpVersion = "4.12.0"
 
 
     implementation(libs.androidx.core.ktx)
@@ -53,7 +55,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 
     //implementation("com.google.android.material:material:1.11.0")
     //Glide
@@ -69,4 +70,12 @@ dependencies {
     //Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+
+    //okhttp3
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+
 }
