@@ -45,6 +45,7 @@ dependencies {
     val navVersion = "2.7.7"
     val retrofitVersion = "2.11.0"
     val okhttpVersion = "4.12.0"
+    val annotationVersion = "1.7.1"
 
 
     implementation(libs.androidx.core.ktx)
@@ -73,9 +74,13 @@ dependencies {
 
     //retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
     //okhttp3
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+
+    //annotation
+    implementation ("androidx.annotation:annotation:$annotationVersion")
 
 }
