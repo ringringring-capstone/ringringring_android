@@ -45,6 +45,7 @@ dependencies {
     val navVersion = "2.7.7"
     val retrofitVersion = "2.11.0"
     val okhttpVersion = "4.12.0"
+    val okhttpLoggingVersion = "4.9.2"
     val annotationVersion = "1.7.1"
 
 
@@ -78,7 +79,7 @@ dependencies {
 
     //okhttp3
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
-    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion")
 
     //annotation
     implementation ("androidx.annotation:annotation:$annotationVersion")
