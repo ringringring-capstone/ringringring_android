@@ -1,4 +1,4 @@
-package com.example.callphobia_overs.main.view
+package com.example.callphobia_overs.main.ui.member
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,15 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.callphobia_overs.R
-import com.example.callphobia_overs.databinding.ActivityMainBinding
+import com.example.callphobia_overs.databinding.ActivityLoginFragmentBinding
 
-class MainActivity : AppCompatActivity() {
+class loginFragment : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityLoginFragmentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLoginFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
     }
 }

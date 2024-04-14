@@ -4,5 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <!--대표 색깔-->
     <color name="main_color">#FFA149</color>
+    <color name="sub_color">#A8BF62</color>
+
+    <!--텍스트 색깔-->
+    <color name="text_color_gray">#686868</color>
 </resources>
