@@ -64,19 +64,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_password"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="17dp"
         android:text="로그인"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:fontFamily="@font/ibm_plexsans_kr_bold"
+        android:background="@drawable/background_btn_maincolor"
         app:layout_constraintTop_toBottomOf="@+id/btn_select_rememberMe"
         tools:layout_editor_absoluteX="15dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_membership"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,14 +86,16 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="아직 계정이 없으신가요?"
+        android:textColor="@color/main_color"
         android:textSize="18sp"
+        android:background="@drawable/background_btn_border_maincolor"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
         tools:layout_editor_absoluteX="15dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/main_color"
         android:gravity="center"
         android:text="아이디 ⋅ 비밀번호 찾기"
