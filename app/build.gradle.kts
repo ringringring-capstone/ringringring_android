@@ -84,4 +84,7 @@ dependencies {
     //annotation
     implementation ("androidx.annotation:annotation:$annotationVersion")
 
+    //chart
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/row_checklist_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_checklist"
+        android:fontFamily="@font/ibm_plexsans_kr_medium"
+        android:button="@null"
+        android:paddingHorizontal="10dp"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="15dp"
+        android:text="통화를 해야하는 상황이 오면 스트레스를 받는다."/>
+
+</androidx.cardview.widget.CardView>

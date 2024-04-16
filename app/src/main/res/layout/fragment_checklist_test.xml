@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".main.ui.checklist.CheckListFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/ibm_plexsans_kr_bold"
+        android:text="@string/checklist_title"
+        android:textSize="22sp"
+        android:textColor="@color/black"/>
+
+    <ListView
+        android:id="@+id/listview_checklist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btn_checklist_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_color"
+        android:fontFamily="@font/ibm_plexsans_kr_bold"
+        android:textSize="17sp"
+        android:layout_margin="10dp"
+        android:text="결과 확인하기"/>
+
+</LinearLayout>

@@ -10,4 +10,8 @@
 
     <!--텍스트 색깔-->
     <color name="text_color_gray">#686868</color>
+
+    <!--home화면 배경색-->
+    <color name="background_color_gray">#ECECEC</color>
+    <color name="background_color_banner">#FFF7F5</color>
 </resources>
