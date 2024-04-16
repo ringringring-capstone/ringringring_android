@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 연습량"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/ibm_plexsans_kr_bold"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/charts_my_practice"
+                android:layout_width="250dp"
+                android:layout_height="250dp"/>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/charts_my_practice2"
+                android:layout_width="250dp"
+                android:layout_height="250dp"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+</LinearLayout>
