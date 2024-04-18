@@ -10,8 +10,13 @@
 
     <!--텍스트 색깔-->
     <color name="text_color_gray">#686868</color>
+    <color name="text_color_red">#E41919</color>
 
     <!--home화면 배경색-->
     <color name="background_color_gray">#ECECEC</color>
     <color name="background_color_banner">#FFF7F5</color>
+
+    <!--progress바 색-->
+    <color name="progress_color_start">#809C29</color>
+    <color name="progress_color_end">#A8BF62</color>
 </resources>
