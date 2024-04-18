@@ -4,7 +4,7 @@
     <item
         android:id="@+id/fragment_checkList"
         android:title="체크리스트"
-        android:icon="@drawable/ic_checklist"/>
+        android:icon="@drawable/selector_menu_checklist"/>
 
     <item
         android:id="@+id/fragment_blank"
@@ -14,5 +14,5 @@
     <item
         android:id="@+id/fragment_setting"
         android:title="마이페이지"
-        android:icon="@drawable/ic_settings"/>
+        android:icon="@drawable/selector_menu_settings"/>
 </menu>
