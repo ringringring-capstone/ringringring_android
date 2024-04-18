@@ -1,16 +1,12 @@
-package com.example.callphobia_overs.main.ui.member
+package com.example.callphobia_overs.main.view.member
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.ActivityLoginFragmentBinding
-import com.example.callphobia_overs.main.ui.home.HomeFragment
+import com.example.callphobia_overs.main.view.MainActivity
 
-class loginFragment : AppCompatActivity() {
+class loginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginFragmentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,10 +15,13 @@ class loginFragment : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, HomeFragment::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-
+        binding.btnGoMembership.setOnClickListener {
+            val intent = Intent(this, membershipActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

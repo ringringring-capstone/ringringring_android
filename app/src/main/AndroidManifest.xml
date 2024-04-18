@@ -15,31 +15,35 @@
         android:theme="@style/Theme.CallPhobia_OverS"
         tools:targetApi="31">
         <activity
-            android:name=".main.ui.member.membershipFragment"
+            android:name=".main.view.mission.missionMainFragment"
             android:exported="false" />
-
         <activity
-            android:name=".main.ui.member.loginFragment"
+            android:name=".main.view.checklist.CheckListResultFragment"
+            android:exported="false" />
+        <activity
+            android:name=".main.view.member.membershipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.view.member.loginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".main.ui.checklist.CheckListFragment"
+            android:name=".main.view.checklist.CheckListTestFragment"
             android:exported="false" />
         <activity
-            android:name=".main.ui.setting.SettingFragment"
+            android:name=".main.view.setting.SettingFragment"
             android:exported="false" />
         <activity
-            android:name=".main.ui.home.HomeFragment"
+            android:name=".main.view.home.HomeFragment"
             android:exported="false" />
         <activity
             android:name=".main.view.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

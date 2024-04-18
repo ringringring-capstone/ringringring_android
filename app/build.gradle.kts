@@ -35,6 +35,8 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
     }
 }
 
@@ -47,7 +49,6 @@ dependencies {
     val okhttpVersion = "4.12.0"
     val okhttpLoggingVersion = "4.9.2"
     val annotationVersion = "1.7.1"
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
