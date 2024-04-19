@@ -18,6 +18,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
+        android:scrollbars="none"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -25,12 +26,12 @@
             android:layout_height="wrap_content">
 
             <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/charts_my_practice"
+                android:id="@+id/charts_my_practice_week"
                 android:layout_width="250dp"
                 android:layout_height="250dp"/>
 
             <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/charts_my_practice2"
+                android:id="@+id/charts_my_practice_month"
                 android:layout_width="250dp"
                 android:layout_height="250dp"/>
 

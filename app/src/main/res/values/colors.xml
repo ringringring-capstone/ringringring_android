@@ -16,6 +16,9 @@
     <color name="background_color_gray">#ECECEC</color>
     <color name="background_color_banner">#FFF7F5</color>
 
+    <!--전화통화 화면 색-->
+    <color name="background_calling_start_color">#5891AC</color>
+    <color name="background_calling_end_color">#7DB1A4</color>
     <!--progress바 색-->
     <color name="progress_color_start">#809C29</color>
     <color name="progress_color_end">#A8BF62</color>

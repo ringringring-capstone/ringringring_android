@@ -15,6 +15,11 @@ import com.example.callphobia_overs.main.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun initClick() {
+        binding.groupHomeMenu.btnReservation
+
+        binding.groupHomeMenu.btnDelivery
+
+        binding.groupHomeMenu.btnInquiry
 
     }
 

@@ -7,7 +7,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color_gray"
+    android:background="@color/white"
     android:scrollbars="none"
     tools:context=".main.view.home.HomeFragment">
 
@@ -20,19 +20,17 @@
             layout="@layout/include_home_banner"/>
 
         <include
+            android:id="@+id/group_home_menu"
             layout="@layout/include_home_menu"/>
 
-        <include
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            layout="@layout/include_home_practice_time_statistics"/>
+            android:layout_height="40dp"
+            android:background="@color/background_color_gray"
+            android:layout_weight="1"/>
 
         <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            layout="@layout/include_home_all_statistics"/>
+            layout="@layout/include_home_practice_time_statistics"/>
 
     </LinearLayout>
 </ScrollView>
