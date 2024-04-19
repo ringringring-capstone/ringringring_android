@@ -18,5 +18,8 @@
     <string name="checklist_six">무슨 말을 해야하는지 알지만, 실제 통화시 말을 못하는 경우가 많다</string>
     <string name="checklist_seven">전화 통화 시, 무슨 말을 해야할 지 모르겠다</string>
 
+    <!--통화 연습 결과 부분-->
+    <string name="callingResult_title">통화가 성공적으로 종료 되었습니다.</string>
+    <string name="callingResult_content">다시 연습을 하고 싶다면,\n아래 \'한번 더 연습하기'버튼을 눌러주세요.</string>
 
 </resources>
