@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -33,12 +35,19 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
         //noinspection DataBindingWithoutKapt
         dataBinding = true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
+
 }
+
 
 dependencies {
     val glideVersion = "4.16.0"
@@ -49,6 +58,7 @@ dependencies {
     val okhttpVersion = "4.12.0"
     val okhttpLoggingVersion = "4.9.2"
     val annotationVersion = "1.7.1"
+    val hiltVersion = "2.44"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -71,16 +81,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutineVersion")
 
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
     //okhttp3
-    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
-    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion")
+    implementation ("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation ("com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion")
 
     //annotation
     implementation ("androidx.annotation:annotation:$annotationVersion")
@@ -88,4 +98,8 @@ dependencies {
     //chart
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
+    //hlit
+    implementation ("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 }
+
