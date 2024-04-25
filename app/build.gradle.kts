@@ -58,7 +58,8 @@ dependencies {
     val okhttpVersion = "4.12.0"
     val okhttpLoggingVersion = "4.9.2"
     val annotationVersion = "1.7.1"
-    val hiltVersion = "2.44"
+    val hiltVersion = "2.48"
+    val lifecycleVersion = "2.7.0"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -79,6 +80,10 @@ dependencies {
     //Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutineVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutineVersion")
+
+    //Coroutine lifecycle
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
 
     //Navigation
     implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
