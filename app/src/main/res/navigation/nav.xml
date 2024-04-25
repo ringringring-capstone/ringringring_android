@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
     app:startDestination="@id/homeFragment">
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.callphobia_overs.main.view.home.HomeFragment"
@@ -13,29 +14,64 @@
             android:id="@+id/action_homeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_checkListResultFragment2"
-            app:destination="@id/checkListResultFragment2" />
+            android:id="@+id/action_homeFragment_to_checkListResultFragment"
+            app:destination="@id/checkListResultFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_callingFragment"
+            app:destination="@id/callingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_missionMainFragment"
+            app:destination="@id/missionMainFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.callphobia_overs.main.view.setting.SettingFragment"
         android:label="SettingFragment" >
         <action
             android:id="@+id/action_settingFragment_to_checkListResultFragment2"
-            app:destination="@id/checkListResultFragment2" />
+            app:destination="@id/checkListResultFragment" />
         <action
             android:id="@+id/action_settingFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/checkListResultFragment2"
+        android:id="@+id/checkListResultFragment"
         android:name="com.example.callphobia_overs.main.view.checklist.CheckListResultFragment"
         android:label="CheckListResultFragment" >
         <action
-            android:id="@+id/action_checkListResultFragment2_to_settingFragment"
+            android:id="@+id/action_checkListResultFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
         <action
-            android:id="@+id/action_checkListResultFragment2_to_homeFragment"
+            android:id="@+id/action_checkListResultFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/callingFragment"
+        android:name="com.example.callphobia_overs.main.view.practicecall.CallingFragment"
+        android:label="CallingFragment" >
+        <action
+            android:id="@+id/action_callingFragment_to_callingEndFragment"
+            app:destination="@id/callingEndFragment" />
+        <action
+            android:id="@+id/action_callingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/callingEndFragment"
+        android:name="com.example.callphobia_overs.main.view.practicecall.CallingEndFragment"
+        android:label="CallingEndFragment" >
+        <action
+            android:id="@+id/action_callingEndFragment_to_callingFragment"
+            app:destination="@id/callingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/missionMainFragment"
+        android:name="com.example.callphobia_overs.main.view.mission.missionMainFragment"
+        android:label="missionMainFragment" />
+
 </navigation>

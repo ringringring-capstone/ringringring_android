@@ -3,6 +3,7 @@ package com.example.callphobia_overs.main.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.ActivityMainBinding
 import com.example.callphobia_overs.main.view.checklist.CheckListResultFragment
@@ -46,5 +47,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun Fragment.changeFragment() {
         manager.beginTransaction().replace(R.id.showFrame, this).commitAllowingStateLoss()
+    }
+
+    public fun replaceFragment(fragment: Fragment){
+        supportFragmentManager
     }
 }

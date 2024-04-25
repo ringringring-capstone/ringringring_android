@@ -1,15 +1,16 @@
 package com.example.callphobia_overs.main.view.mission
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import com.example.callphobia_overs.R
+import com.example.callphobia_overs.databinding.FragmentMissionMainBinding
+import com.example.callphobia_overs.main.base.BaseFragment
 
-class missionMainFragment : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.fragment_mission_main)
+class missionMainFragment : BaseFragment<FragmentMissionMainBinding>(R.layout.fragment_home) {
+    override fun initView() {
 
     }
+
+    override fun initClick() {
+
+    }
+
 }
