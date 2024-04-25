@@ -1,4 +1,4 @@
-package com.example.callphobia_overs.main
+package com.example.callphobia_overs.main.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
 
 /** fragment base, 중복되는 부분들 없앰 */
 
