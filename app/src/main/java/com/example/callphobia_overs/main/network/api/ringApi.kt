@@ -16,11 +16,18 @@ import retrofit2.http.Path
 interface RingApi {
 
     @POST("/login")/** 로그인 */
-    suspend fun login(@Body login : Login) : Response<LoginResponse>
+    suspend fun login(
+        @Body login : Login
+    ) : Response<LoginResponse>
 
     @POST("/signup") /** 회원가입 */
-    suspend fun JoinMembership(@Body memberShip : SendMembership) : Response<MembershipResponse>
+    suspend fun joinMembership(
+        @Body memberShip : SendMembership
+    ) : Response<MembershipResponse>
 
     @GET("/emailcheck/{email}") /**이메일 유효 체크 */
-    suspend fun checkMail(@Path("email") email : String) : Response<Unit>
+    suspend fun checkMail(
+        @Path("email") email : String
+    ) : Response<Unit>
+
 }
