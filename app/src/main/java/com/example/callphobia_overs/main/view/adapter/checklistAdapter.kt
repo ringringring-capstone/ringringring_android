@@ -2,6 +2,7 @@ package com.example.callphobia_overs.main.view.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ class checklistAdapter (val context: Context, val checkList: ArrayList<checkData
         binding = RowChecklistBinding.inflate(LayoutInflater.from(context))
         val data = checkList[position]
         binding!!.rowChecklistContent.text = data.content
+        Log.d("체크리스트내용",data.content)
 
         return binding!!.root
 

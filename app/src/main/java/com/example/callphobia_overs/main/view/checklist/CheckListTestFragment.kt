@@ -1,5 +1,6 @@
 package com.example.callphobia_overs.main.view.checklist
 
+import android.util.Log
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.FragmentChecklistTestBinding
 import com.example.callphobia_overs.main.base.BaseFragment
@@ -8,21 +9,22 @@ import com.example.callphobia_overs.main.view.adapter.checklistAdapter
 
 class CheckListTestFragment : BaseFragment<FragmentChecklistTestBinding>(R.layout.fragment_checklist_test) {
     override fun initClick() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initView() {
         var contentList = arrayListOf<checkDataClass>(
-            checkDataClass(R.string.checklist_one.toString()),
-            checkDataClass(R.string.checklist_two.toString()),
-            checkDataClass(R.string.checklist_three.toString()),
-            checkDataClass(R.string.checklist_four.toString()),
-            checkDataClass(R.string.checklist_five.toString()),
-            checkDataClass(R.string.checklist_six.toString()),
-            checkDataClass(R.string.checklist_seven.toString()),
+            checkDataClass(resources.getString(R.string.checklist_one)),
+            checkDataClass(resources.getString(R.string.checklist_two)),
+            checkDataClass(resources.getString(R.string.checklist_three)),
+            checkDataClass(resources.getString(R.string.checklist_four)),
+            checkDataClass(resources.getString(R.string.checklist_five)),
+            checkDataClass(resources.getString(R.string.checklist_six)),
+            checkDataClass(resources.getString(R.string.checklist_seven)),
         )
 
         val adapter = checklistAdapter(requireContext(), contentList)
+        Log.d("체크리스트내용main", resources.getString(R.string.checklist_one))
         binding.listviewChecklist.adapter = adapter
     }
 
