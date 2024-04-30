@@ -10,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 //서버 <-> 클라이언트 간의 통신 api 정의
@@ -18,6 +19,8 @@ interface RingApi {
     @POST("/login")/** 로그인 */
     suspend fun login(
         @Body login : Login
+        //@Query("email") email: String,
+        //@Query("pwd") pwd : String
     ) : Response<LoginResponse>
 
     @POST("/signup") /** 회원가입 */

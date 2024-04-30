@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object retrofitModel {
 
-    private val baseUrl = "http://localhost:9090" //4.14일 기준 임시로 작성해둠
+    private val baseUrl = "http://3.36.125.87:9090" //4.14일 기준 임시로 작성해둠
 
     private val logging = HttpLoggingInterceptor().apply{
         level = HttpLoggingInterceptor.Level.BODY //okhttp 로그 추가
