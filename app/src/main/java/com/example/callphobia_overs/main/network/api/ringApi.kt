@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,10 +18,9 @@ import retrofit2.http.Query
 interface RingApi {
 
     @POST("/login")/** 로그인 */
+    @Headers("Content-Type: application/json")
     suspend fun login(
         @Body login : Login
-        //@Query("email") email: String,
-        //@Query("pwd") pwd : String
     ) : Response<LoginResponse>
 
     @POST("/signup") /** 회원가입 */

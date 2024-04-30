@@ -20,5 +20,5 @@ data class LoginResponse( // 서버 -> 클라
     @SerializedName("email")
     val email : String,
     @SerializedName("pwd")
-    val pwd: String
+    val pwd: String ?= null
 )
