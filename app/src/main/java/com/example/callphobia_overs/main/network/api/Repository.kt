@@ -25,21 +25,32 @@ class Repository @Inject constructor(private val api : RingApi) {
         return Result.Error(result.message())
     }
 
-    suspend fun memberShipServer(
-        userName: String,
-        userPw: String,
-        userEmail: String
-    ): Result<MembershipResponse> {
-        val result = api.joinMembership(SendMembership(userName, userPw, userEmail))
+    suspend fun memberShipEmailCheck(userEmail: String) : Result<Unit> {
+        val result = api.checkMail(userEmail)
 
         if(result.isSuccessful){
-            Log.d("repository","회원가입성공")
+            return Result.Success(Unit)
         }
-
         return Result.Error(result.message())
     }
 
-    /**DB 부분*/
+    suspend fun memberShipServer(
+        userName: String,
+        userEmail: String,
+        userPw: String
+    ): Result<MembershipResponse> {
+        val result = api.joinMembership(SendMembership(userName, userEmail, userPw))
+
+        if(result.isSuccessful){
+            Log.d(LOG,"회원가입성공")
+            return Result.Success(result.body()!!)
+        }
+
+        Log.d(LOG, "회원가입 실패")
+        return Result.Error(result.message())
+    }
+
+    /**DB 관련 부분*/
 
 }
 

@@ -24,11 +24,13 @@ interface RingApi {
     ) : Response<LoginResponse>
 
     @POST("/signup") /** 회원가입 */
+    @Headers("Content-Type: application/json")
     suspend fun joinMembership(
         @Body memberShip : SendMembership
     ) : Response<MembershipResponse>
 
     @GET("/emailcheck/{email}") /**이메일 유효 체크 */
+    @Headers("Content-Type: application/json")
     suspend fun checkMail(
         @Path("email") email : String
     ) : Response<Unit>
