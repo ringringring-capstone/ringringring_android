@@ -34,11 +34,7 @@ class Repository @Inject constructor(private val api : RingApi) {
         return Result.Error(result.message())
     }
 
-    suspend fun memberShipServer(
-        userName: String,
-        userEmail: String,
-        userPw: String
-    ): Result<MembershipResponse> {
+    suspend fun memberShipServer(userName: String, userEmail: String, userPw: String): Result<MembershipResponse> {
         val result = api.joinMembership(SendMembership(userName, userEmail, userPw))
 
         if(result.isSuccessful){

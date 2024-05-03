@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import dagger.Provides
 
+/*
 @Dao
 interface CallRecordsDao {
     @Insert
@@ -16,3 +18,4 @@ interface CallRecordsDao {
     @Query("SELECT * FROM callrecords")
     fun getAll() : List<CallRecords>
 }
+ */

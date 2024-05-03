@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
+<!--
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,8 +11,11 @@
     android:background="@color/white"
     android:scrollbars="none"
     tools:context=".main.view.home.HomeFragment">
-
+-->
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -34,5 +37,4 @@
             layout="@layout/include_home_practice_time_statistics"/>
 
     </LinearLayout>
-</ScrollView>
 </layout>

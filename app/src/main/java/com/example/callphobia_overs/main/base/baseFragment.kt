@@ -8,6 +8,11 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.example.callphobia_overs.R
+import com.example.callphobia_overs.main.view.MainActivity
 
 /** fragment base, 중복되는 부분들 없앰 */
 
@@ -33,4 +38,13 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val layoutRes : Int)
     abstract fun initView() //보여주는 부분 작성
     abstract fun initClick() //클릭 이벤트 부분 작성
 
+    /*
+    protected fun findNavController():NavController?{
+        val navHostFragment = (requireActivity() as? MainActivity)?.
+        supportFragmentManager?.
+        findFragmentById(R.id.showFrame) as? NavHostFragment
+
+        return navHostFragment?.navController
+    }
+*/
 }

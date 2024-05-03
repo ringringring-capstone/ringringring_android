@@ -5,7 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CallRecords::class], version = 1, exportSchema = false)
+//@Database(entities = [CallRecords::class], version = 1, exportSchema = false)
+
+/*
 abstract class CallDataBase : RoomDatabase() {
     abstract fun CallRecords() : CallRecords
 
@@ -27,4 +29,4 @@ abstract class CallDataBase : RoomDatabase() {
         }
     }
 
-}
+}*/

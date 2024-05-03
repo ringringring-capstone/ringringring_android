@@ -60,6 +60,7 @@ dependencies {
     val annotationVersion = "1.7.1"
     val hiltVersion = "2.48"
     val lifecycleVersion = "2.7.0"
+    val roomVersion = "2.6.1"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -80,6 +81,10 @@ dependencies {
     //Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutineVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutineVersion")
+
+    //room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     //Coroutine lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")

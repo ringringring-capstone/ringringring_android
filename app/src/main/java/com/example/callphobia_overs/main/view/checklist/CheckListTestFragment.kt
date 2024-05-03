@@ -6,7 +6,9 @@ import com.example.callphobia_overs.databinding.FragmentChecklistTestBinding
 import com.example.callphobia_overs.main.base.BaseFragment
 import com.example.callphobia_overs.main.view.adapter.checkDataClass
 import com.example.callphobia_overs.main.view.adapter.checklistAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CheckListTestFragment : BaseFragment<FragmentChecklistTestBinding>(R.layout.fragment_checklist_test) {
     override fun initClick() {
 

@@ -21,6 +21,16 @@
     <include
         layout="@layout/include_checklist_result_people_chart"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_check_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/ibm_plexsans_kr_bold"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/background_btn_maincolor"
+            android:text="검사하기"/>
     </LinearLayout>
 </ScrollView>
 </layout>

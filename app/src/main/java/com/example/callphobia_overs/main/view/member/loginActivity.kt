@@ -34,7 +34,7 @@ class loginActivity : AppCompatActivity() {
             val userPw = binding.textPassword.text.toString()
 
             Log.d(LOG, "사용자아이디 : $userId")
-            Log.d(LOG, "사용자비ㄴ번 : $userPw")
+            Log.d(LOG, "사용자비번 : $userPw")
 
             if(userId.isEmpty() || userPw.isEmpty()){
                 Toast.makeText(this,"아이디, 비밀번호를 입력해주세요.",Toast.LENGTH_SHORT).show()
