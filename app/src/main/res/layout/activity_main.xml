@@ -26,7 +26,7 @@
       android:layout_gravity="bottom"
       app:menu="@menu/bottom_menu_sheet"
       app:itemBackground="@color/white"
-      android:background="@drawable/background_bottomsheet_menu"/>
+      android:background="@drawable/navi_back"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/goHome"

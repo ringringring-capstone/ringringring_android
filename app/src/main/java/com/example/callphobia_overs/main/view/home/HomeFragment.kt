@@ -1,6 +1,10 @@
 package com.example.callphobia_overs.main.view.home
 
+import android.graphics.Color
 import android.util.Log
+import androidx.core.content.ContentProviderCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat.animate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -10,12 +14,16 @@ import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.FragmentHomeBinding
 import com.example.callphobia_overs.main.base.BaseFragment
 import com.example.callphobia_overs.main.view.practicecall.CallingFragment
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-
 
     override fun initClick() { //뭘 누르던간 다 전화통화 화면으로 이동해야함
 
@@ -44,6 +52,32 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     override fun initView() {
+        val pieChart : PieChart = binding.homeMyPracticeChart.chartsMyPracticeWeek
+
+        val chartData = ArrayList<PieEntry>()
+        chartData.add(PieEntry(20F, "양호수준"))
+        chartData.add(PieEntry(30F, "주의수준"))
+        chartData.add(PieEntry(50F, "심각수준"))
+
+        val chartColors = listOf(
+            ContextCompat.getColor(requireContext(), R.color.background_chart_green),
+            ContextCompat.getColor(requireContext(), R.color.background_chart_orange),
+            ContextCompat.getColor(requireContext(), R.color.background_chart_pink)
+        )
+
+        val dataSet = PieDataSet(chartData, "")
+        dataSet.colors = chartColors
+        dataSet.valueTextSize = 16F
+        dataSet.valueTextColor = R.color.black
+
+        val setWeekChart = PieData(dataSet)
+        pieChart.data = setWeekChart
+
+        pieChart.legend.isEnabled = false
+        pieChart.description.isEnabled = false
+
+        pieChart.invalidate()
+
 
     }
 

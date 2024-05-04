@@ -16,6 +16,11 @@
     <color name="background_color_gray">#FFECECEC</color>
     <color name="background_color_banner">#FFFFF7F5</color>
 
+    <!--차트 색깔-->
+    <color name="background_chart_pink">#DA8787</color>
+    <color name="background_chart_orange">#FF9C68</color>
+    <color name="background_chart_green">#68BA59</color>
+
     <!--전화통화 관련 색-->
     <color name="background_calling_start_color">#FF5891AC</color>
     <color name="background_calling_end_color">#FF7DB1A4</color>
