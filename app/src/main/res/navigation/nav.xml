@@ -26,6 +26,7 @@
         android:id="@+id/settingFragment"
         android:name="com.example.callphobia_overs.main.view.setting.SettingFragment"
         android:label="SettingFragment" />
+
     <fragment
         android:id="@+id/checkListResultFragment"
         android:name="com.example.callphobia_overs.main.view.checklist.CheckListResultFragment"
