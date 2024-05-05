@@ -15,6 +15,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       app:defaultNavHost="true"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
       app:layout_constraintBottom_toTopOf="@id/main_bottom_nav"
       app:layout_constraintTop_toTopOf="parent"
       app:navGraph="@navigation/nav" />
@@ -39,5 +40,11 @@
       app:tint="@color/white"
       app:fabCustomSize="70dp"
       app:layout_anchor="@id/main_bottom_nav"/>
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/white"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

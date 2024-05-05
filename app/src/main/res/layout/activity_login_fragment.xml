@@ -17,6 +17,7 @@
         android:gravity="center"
         android:text="App Name"
         android:textSize="30sp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -24,74 +25,91 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/background_inputdata_border_gray"
-        android:hint="아이디"
-        android:textColor="@color/black"
         android:fontFamily="@font/ibm_plexsans_kr_regular"
+        android:hint="아이디"
+        android:maxLines="1"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="6dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="10dp" />
+        android:paddingVertical="7dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/text_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/background_inputdata_border_gray"
         android:fontFamily="@font/ibm_plexsans_kr_regular"
         android:hint="비밀번호"
-        android:textColor="@color/black"
+        android:inputType="textPassword"
+        android:maxLines="1"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="6dp"
-        app:layout_constraintTop_toBottomOf="@+id/text_id"
-        tools:layout_editor_absoluteX="10dp" />
+        android:paddingVertical="7dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_id" />
 
     <CheckBox
         android:id="@+id/btn_select_rememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
-        android:text="자동 로그인"
         android:button="@null"
-        android:drawableLeft="@drawable/selector_remember_me"
         android:buttonTint="@color/main_color"
-        android:textColor="@color/text_color_gray"
-        android:fontFamily="@font/ibm_plexsans_kr_medium"
+        android:drawableLeft="@drawable/selector_remember_me"
         android:drawablePadding="10dp"
+        android:fontFamily="@font/ibm_plexsans_kr_medium"
+        android:text="자동 로그인"
+        android:textColor="@color/text_color_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_password"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="17dp"
+        android:layout_marginEnd="25dp"
+        android:paddingVertical="7dp"
+        android:background="@drawable/background_btn_maincolor"
+        android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="로그인"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:fontFamily="@font/ibm_plexsans_kr_bold"
-        android:background="@drawable/background_btn_maincolor"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_rememberMe"
-        tools:layout_editor_absoluteX="15dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_rememberMe" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_go_membership"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="13dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/background_btn_border_maincolor"
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="아직 계정이 없으신가요?"
+        android:paddingVertical="7dp"
         android:textColor="@color/main_color"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        tools:layout_editor_absoluteX="15dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <TextView
         android:layout_width="match_parent"

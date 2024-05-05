@@ -29,15 +29,16 @@
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="사용자 정보를 입력해주세요."
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textinputlayout"
+        android:id="@+id/text_layout_name"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" >
@@ -69,10 +70,10 @@
         android:layout_marginTop="45dp"
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="@string/login_title"
-        android:textSize="22sp"
+        android:textSize="17sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinputlayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_name" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -86,8 +87,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_layout_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_weight="1">
 
@@ -120,11 +123,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/text_layout_pw"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         app:errorEnabled="true"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:passwordToggleEnabled="true">
@@ -141,11 +143,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_pw_check"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_pw"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -170,7 +173,7 @@
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="회원가입"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
