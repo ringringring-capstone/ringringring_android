@@ -1,6 +1,7 @@
 package com.example.callphobia_overs.main.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       // binding.mainBottomNav.selectedItemId = R.id.fragment_home
+        binding.toolbar.visibility = View.GONE
 
         setBottomNavigation()
     }
@@ -68,4 +69,23 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 */
+
+    fun showBottomNavigationView(){
+        binding.mainBottomNav.visibility = View.VISIBLE
+        binding.goHome.visibility = View.VISIBLE
+    }
+
+    fun showToolbarView(){
+        binding.toolbar.visibility = View.VISIBLE
+    }
+
+    fun hideBottomNavigationView(){
+        binding.mainBottomNav.visibility = View.GONE
+        binding.goHome.visibility = View.GONE
+    }
+
+    fun hideToolbarView(){
+        binding.toolbar.visibility = View.GONE
+    }
+
 }
