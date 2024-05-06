@@ -62,6 +62,7 @@ dependencies {
     val hiltVersion = "2.48"
     val lifecycleVersion = "2.7.0"
     val roomVersion = "2.6.1"
+    val lottieVersion = "6.4.0"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -112,5 +113,8 @@ dependencies {
     //hlit
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    //lottie (벡터기반 애니메이션)
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 }
 
