@@ -1,7 +1,11 @@
 package com.example.callphobia_overs.main.view.home
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat.animate
@@ -53,6 +57,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         bottomViewShow()
         weekChartShow()
         monthChartShow()
+        audioPermission()
     }
 
     private fun bottomViewShow(){
@@ -122,6 +127,14 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         pieChart.animateY(1000)
 
         pieChart.invalidate()
+    }
+
+    private fun audioPermission(){ //stt 사용해야 해서 권한 확인 필요
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO)
+            != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO), 0)
+        }
     }
 
 }

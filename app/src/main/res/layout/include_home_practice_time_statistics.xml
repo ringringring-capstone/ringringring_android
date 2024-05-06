@@ -27,13 +27,15 @@
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/charts_my_practice_week"
-                android:layout_width="250dp"
-                android:layout_height="250dp"/>
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:padding="15dp"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/charts_my_practice_month"
-                android:layout_width="250dp"
-                android:layout_height="250dp"/>
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:padding="15dp"/>
 
         </LinearLayout>
 
