@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id ("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -86,7 +87,8 @@ dependencies {
 
     //room
     implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    //annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
 
     //Coroutine lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")

@@ -27,9 +27,6 @@
             android:name=".main.view.member.membershipComplete"
             android:exported="false" />
         <activity
-            android:name=".main.view.fragment_empty"
-            android:exported="false" />
-        <activity
             android:name=".main.view.MainActivity"
             android:exported="false" />
         <activity
