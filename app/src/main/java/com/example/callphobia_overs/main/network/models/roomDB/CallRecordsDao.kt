@@ -1,5 +1,6 @@
 package com.example.callphobia_overs.main.network.models.roomDB
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -18,5 +19,5 @@ interface CallRecordsDao {
     fun delete(callRecords: CallRecords)
 
     @Query("SELECT * FROM callrecords")
-    fun getAll() : List<CallRecords>
+    fun getAll() : LiveData<List<CallRecords>> //삭제 시 변경사항을 인식해야해서 LiveData로 변경
 }

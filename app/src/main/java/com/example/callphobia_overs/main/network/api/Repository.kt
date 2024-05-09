@@ -1,13 +1,16 @@
 package com.example.callphobia_overs.main.network.api
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.example.callphobia_overs.main.network.models.Login
 import com.example.callphobia_overs.main.network.models.LoginResponse
 import com.example.callphobia_overs.main.network.models.MembershipResponse
 import com.example.callphobia_overs.main.network.models.SendMembership
+import com.example.callphobia_overs.main.network.models.roomDB.CallRecords
+import com.example.callphobia_overs.main.network.models.roomDB.CallRecordsDao
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val api : RingApi) {
+class Repository @Inject constructor(private val api : RingApi, private val callDao: CallRecordsDao) {
 
     private val LOG = "repository"
 
@@ -47,6 +50,18 @@ class Repository @Inject constructor(private val api : RingApi) {
     }
 
     /**DB 관련 부분*/
+
+    fun callRecordInsert(callRecords: CallRecords) {
+        callDao.insertCall(callRecords)
+    }
+
+    fun callRecordDelete(callRecords: CallRecords){
+        callDao.insertCall(callRecords)
+    }
+
+    fun callRecordAllData() : LiveData<List<CallRecords>> {
+        return callDao.getAll()
+    }
 
 }
 

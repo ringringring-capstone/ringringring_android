@@ -28,14 +28,16 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.visibility = View.GONE
 
         setBottomNavigation()
+
+        if(savedInstanceState == null){
+            binding.mainBottomNav.selectedItemId = R.id.fragment_home
+        }
     }
 
     private fun setBottomNavigation(){
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragContainer) as NavHostFragment
         val navController = navHostFragment.navController
         binding.mainBottomNav.setupWithNavController(navController)
-
-        binding.mainBottomNav.selectedItemId = R.id.fragment_home
 
         binding.mainBottomNav.setOnItemSelectedListener {
             when(it.itemId){
