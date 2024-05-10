@@ -4,6 +4,7 @@
         <shape>
             <corners android:radius="10dp"/>
             <solid android:color="@color/white"/>
+            <size android:height="10dp"/>
         </shape>
     </item>
     <item android:id="@android:id/secondaryProgress">
@@ -11,6 +12,7 @@
             <shape>
                 <corners android:radius="10dp"/>
                 <solid android:color="@color/text_color_red"/>
+                <size android:height="10dp"/>
             </shape>
         </clip>
     </item>

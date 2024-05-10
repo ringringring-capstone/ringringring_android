@@ -15,11 +15,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <include
-        layout="@layout/include_checklist_result_progress"/>
+        <include
+            layout="@layout/include_checklist_result_progress"/>
 
-    <include
-        layout="@layout/include_checklist_result_people_chart"/>
+        <include
+            layout="@layout/include_checklist_result_people_chart"/>
+
+        <include
+            layout="@layout/include_checklist_result_a_day_chart"/>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_check_state"
