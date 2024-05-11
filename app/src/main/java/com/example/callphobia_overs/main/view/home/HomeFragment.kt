@@ -1,6 +1,7 @@
 package com.example.callphobia_overs.main.view.home
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
@@ -9,6 +10,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat.animate
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.FragmentHomeBinding
 import com.example.callphobia_overs.main.base.BaseFragment
+import com.example.callphobia_overs.main.network.viewmodel.DataViewModel
 import com.example.callphobia_overs.main.view.MainActivity
 import com.example.callphobia_overs.main.view.practicecall.CallingFragment
 import com.github.mikephil.charting.animation.Easing
@@ -29,6 +33,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+
+    private val vm : DataViewModel by activityViewModels()
+    private val LOG = "homefragment"
+    private var name : String = ""
 
     override fun initClick() { //뭘 누르던간 다 전화통화 화면으로 이동해야함
 
@@ -53,12 +61,26 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun initView() {
+        vm.userName.observe(this, Observer {
+            binding.groupHomeBanner.textUserWelcome.text = it.toString()
+        })
         bottomViewShow()
         weekChartShow()
         monthChartShow()
         audioPermission()
     }
+
+    /*
+    override fun onResume() {
+        super.onResume()
+        vm.userName.observe(this, Observer {
+            name = it.toString()
+            Log.d(LOG,name)
+        })
+    }
+*/
 
     private fun bottomViewShow(){
         val navController = findNavController()
@@ -70,6 +92,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 (requireActivity() as MainActivity).hideBottomNavigationView()
         }
     }
+
+
 
     private fun weekChartShow(){
         val pieChart : PieChart = binding.homeMyPracticeChart.chartsMyPracticeWeek
