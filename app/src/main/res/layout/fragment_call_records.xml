@@ -15,7 +15,8 @@
         android:id="@+id/recycler_call_records"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
         tools:listitem="@layout/row_calling_history"/>
-
 </LinearLayout>
 </layout>

@@ -9,7 +9,6 @@
         android:background="@drawable/background_calling"
         tools:context=".main.view.practicecall.CallingFragment">
 
-
         <Chronometer
             android:id="@+id/timer_callTime"
             android:layout_width="match_parent"
@@ -96,6 +95,6 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/btn_toSpeak" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

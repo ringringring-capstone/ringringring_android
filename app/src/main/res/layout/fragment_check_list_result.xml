@@ -24,17 +24,19 @@
         <include
             layout="@layout/include_checklist_result_a_day_chart"/>
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_check_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:fontFamily="@font/ibm_plexsans_kr_bold"
-            android:textSize="20sp"
+            android:fontFamily="@font/ibm_plexsans_kr_medium"
+            android:textSize="18sp"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/background_btn_maincolor"
-            android:text="검사하기"/>
+            android:text="검사하기"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="100dp"/>
     </LinearLayout>
 </ScrollView>
 </layout>

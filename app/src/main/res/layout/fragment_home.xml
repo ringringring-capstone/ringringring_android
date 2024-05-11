@@ -20,6 +20,7 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/group_home_banner"
             layout="@layout/include_home_banner"/>
 
         <include
