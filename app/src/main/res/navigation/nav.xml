@@ -25,7 +25,11 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.callphobia_overs.main.view.setting.SettingFragment"
-        android:label="SettingFragment" />
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_callRecordsFragment"
+            app:destination="@id/callRecordsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/checkListResultFragment"
@@ -35,14 +39,31 @@
             android:id="@+id/action_checkListResultFragment_to_checkListTestFragment"
             app:destination="@id/checkListTestFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/callingFragment"
         android:name="com.example.callphobia_overs.main.view.practicecall.CallingFragment"
         android:label="CallingFragment" >
         <action
             android:id="@+id/action_callingFragment_to_callingEndFragment"
-            app:destination="@id/callingEndFragment" />
+            app:destination="@id/callingEndFragment"/>
+
+        <argument
+            android:name="callTitle"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="callContent"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="callTime"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
+
     <fragment
         android:id="@+id/callingEndFragment"
         android:name="com.example.callphobia_overs.main.view.practicecall.CallingEndFragment"
@@ -53,7 +74,23 @@
         <action
             android:id="@+id/action_callingEndFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <argument
+            android:name="callTitle"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="callContent"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="callTime"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
+
     <fragment
         android:id="@+id/checkListTestFragment"
         android:name="com.example.callphobia_overs.main.view.checklist.CheckListTestFragment"
@@ -62,8 +99,18 @@
             android:id="@+id/action_checkListTestFragment_to_checkListResultFragment"
             app:destination="@id/checkListResultFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/missionMainFragment"
         android:name="com.example.callphobia_overs.main.view.mission.missionMainFragment"
         android:label="missionMainFragment" />
+
+    <fragment
+        android:id="@+id/callRecordsFragment"
+        android:name="com.example.callphobia_overs.main.view.setting.CallRecordsFragment"
+        android:label="CallRecordsFragment" >
+        <action
+            android:id="@+id/action_callRecordsFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
 </navigation>

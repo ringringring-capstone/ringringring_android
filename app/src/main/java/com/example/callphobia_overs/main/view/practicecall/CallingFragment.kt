@@ -7,6 +7,7 @@ import android.os.SystemClock
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.text.Layout.Directions
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -21,12 +22,16 @@ import dagger.hilt.android.AndroidEntryPoint
 class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling) {
     private lateinit var speechRecognizer: SpeechRecognizer
     private val LOG="calling"
+    private var callHistory : String = "" //통화 내용을 누적
 
     override fun initClick() {
         val navController = requireActivity().findNavController(R.id.fragContainer)
 
         binding.btnStopCall.setOnClickListener {
-            navController.navigate(R.id.action_callingFragment_to_callingEndFragment)
+            val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
+                callTitle = "테스트용", callContent = callHistory)
+
+            navController.navigate(action)
         }
 
         binding.btnToSpeak.setOnClickListener { //사용자 음성 인식 시작
@@ -92,6 +97,8 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
             val data = result?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
             for(i in data!!.indices)
                 binding.textUserSay.text = data[i]
+
+            callHistory = binding.textUserSay.text.toString()
         }
 
         override fun onPartialResults(partialResults: Bundle?) {
@@ -104,13 +111,4 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
 
     }
 
-
-    private fun toolbarShow(){
-        val navController = findNavController()
-
-        navController.addOnDestinationChangedListener{ _, destination, _ ->
-            if(destination.id == R.id.callingFragment)
-                (requireActivity() as MainActivity).showToolbarView()
-        }
-    }
 }
