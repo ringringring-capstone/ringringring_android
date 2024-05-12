@@ -1,5 +1,6 @@
 package com.example.callphobia_overs.main.network.api
 
+import com.example.callphobia_overs.main.network.models.EmailCodeCheck
 import com.example.callphobia_overs.main.network.models.Login
 import com.example.callphobia_overs.main.network.models.LoginResponse
 import com.example.callphobia_overs.main.network.models.MembershipResponse
@@ -33,6 +34,12 @@ interface RingApi {
     @Headers("Content-Type: application/json")
     suspend fun checkMail(
         @Path("email") email : String
+    ) : Response<Unit>
+
+    @POST("/codecheck") /**메일 인증 코드 유효성 검사*/
+    @Headers("Content-Type : application/json")
+    suspend fun checkCode(
+        @Body emailCodeCheck: EmailCodeCheck
     ) : Response<Unit>
 
 }

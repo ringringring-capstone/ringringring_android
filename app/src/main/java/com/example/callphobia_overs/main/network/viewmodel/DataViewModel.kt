@@ -21,47 +21,27 @@ import javax.inject.Inject
 class DataViewModel @Inject constructor(private val repository: Repository, application: Application) : AndroidViewModel(application) {
     private val LOG = "viewModel"
 
-    /** viewmodel 내에서 직접적으로 데이터 바꿀 때 */
-    private var _currentUserName = MutableLiveData<String>()
-    private var _currentUserId = MutableLiveData<Int>()
-
-
-    /** 외부에서 값에 접근하고 싶을 때 */
-    val userName : LiveData<String>
-        get() = _currentUserName
-
-
-    /**초기값*/
-    init{
-        _currentUserName.postValue("이름없음")
-    }
-
-
     /** 서버 관련 함수들 */
-    suspend fun login(userEmail : String, userPw : String) : Boolean {
+    suspend fun login(userEmail : String, userPw : String) : Result<LoginResponse> {
         val result = repository.loginServer(userEmail, userPw)
 
         when(result){
-            is Result.Success -> { //사용자 정보 저장해주기
-                val data = result.data
-                Log.d(LOG, "사용자 이름 : ${data.name}")
-                _currentUserName.postValue(data.name)
-                _currentUserId.postValue(data.id)
-                Log.d(LOG, "로그인 성공")
-            }
-
+            is Result.Success -> Log.d(LOG, "로그인 성공")
             is Result.Error -> Log.d(LOG, "로그인 실패")
             is Result.Exception -> Log.d(LOG,"예외 발생")
         }
+        return result
+    }
 
-        Log.d(LOG, "저장된이름"+ _currentUserName.value.toString())
-
+    /**이메일로 인증코드 보내기*/
+    suspend fun memberShipMailCheck(userEmail: String) : Boolean {
+        val result = repository.memberShipEmailCheck(userEmail)
         return result is Result.Success
     }
 
-
-    suspend fun memberShipMailCheck(userEmail: String) : Boolean {
-        val result = repository.memberShipEmailCheck(userEmail)
+    /**인증코드 확인*/
+    suspend fun memberShipMailCodeCheck(userEmail: String, userCode : Int) : Boolean {
+        val result = repository.memberShipEmailCodeCheck(userEmail, userCode)
         return result is Result.Success
     }
 
