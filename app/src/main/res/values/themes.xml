@@ -9,4 +9,9 @@
 
     <style name="Theme.CallPhobia_OverS" parent="Base.Theme.CallPhobia_OverS" />
 
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/ibm_plexsans_kr_regular</item>
+    </style>
+
 </resources>

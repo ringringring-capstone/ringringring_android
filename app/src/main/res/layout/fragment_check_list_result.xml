@@ -16,12 +16,15 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/group_recent_result"
             layout="@layout/include_checklist_result_progress"/>
 
         <include
+            android:id="@+id/group_checklist_people_result"
             layout="@layout/include_checklist_result_people_chart"/>
 
         <include
+            android:id="@+id/group_a_day_chart"
             layout="@layout/include_checklist_result_a_day_chart"/>
 
         <androidx.appcompat.widget.AppCompatButton

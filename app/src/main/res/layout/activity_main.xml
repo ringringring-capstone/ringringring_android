@@ -41,10 +41,5 @@
       app:fabCustomSize="70dp"
       app:layout_anchor="@id/main_bottom_nav"/>
 
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/white"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

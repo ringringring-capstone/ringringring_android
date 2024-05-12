@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="10dp"
     app:cardCornerRadius="21dp"
     android:background="@color/white">
 
@@ -15,13 +16,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/selector_checklist"
-        android:fontFamily="@font/ibm_plexsans_kr_medium"
+        android:fontFamily="@font/ibm_plexsans_kr_regular"
         android:drawableEnd="@drawable/selector_checklist_ic"
         android:drawablePadding="12dp"
         android:button="@null"
         android:paddingHorizontal="15dp"
         android:paddingVertical="5dp"
         android:textSize="16sp"
+        android:textColor="@drawable/selector_text_color"
         android:text="통화를 해야하는 상황이 오면 스트레스를 받는다."/>
 
 </androidx.cardview.widget.CardView>
