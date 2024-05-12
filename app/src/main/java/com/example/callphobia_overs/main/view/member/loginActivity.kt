@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.callphobia_overs.databinding.ActivityLoginFragmentBinding
 import com.example.callphobia_overs.main.network.api.Repository
+import com.example.callphobia_overs.main.network.api.Result
 import com.example.callphobia_overs.main.network.viewmodel.DataViewModel
 import com.example.callphobia_overs.main.view.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,9 +34,6 @@ class loginActivity : AppCompatActivity() {
             val userId = binding.textId.text.toString()
             val userPw = binding.textPassword.text.toString()
 
-            Log.d(LOG, "사용자아이디 : $userId")
-            Log.d(LOG, "사용자비번 : $userPw")
-
             if(userId.isEmpty() || userPw.isEmpty()){
                 Toast.makeText(this,"아이디, 비밀번호를 입력해주세요.",Toast.LENGTH_SHORT).show()
 
@@ -44,9 +42,18 @@ class loginActivity : AppCompatActivity() {
                     Log.d(LOG, "로그인 버튼 눌림")
                     val result = vm.login(userId, userPw)
 
-                    if(result){
-                        val intent = Intent(this@loginActivity, MainActivity::class.java)
-                        startActivity(intent)
+                    when(result){
+                        is Result.Success -> {
+                            val intent = Intent(this@loginActivity, MainActivity::class.java)
+                                .apply {
+                                    putExtra("name", result.data.name)
+                                    putExtra("id", result.data.id)
+                                }
+                            startActivity(intent)
+                        }
+
+                        is Result.Error -> Log.d(LOG, "로그인 실패")
+                        is Result.Exception -> Log.d(LOG, "로그인 예외 발생")
                     }
                 }
             }

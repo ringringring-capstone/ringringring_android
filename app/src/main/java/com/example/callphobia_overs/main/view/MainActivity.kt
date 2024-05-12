@@ -1,6 +1,7 @@
 package com.example.callphobia_overs.main.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,15 +18,18 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    private val LOG = "mainActivity"
     private lateinit var binding : ActivityMainBinding
+    private var userName : String = ""
+    private var userId : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.toolbar.visibility = View.GONE
+        userName = intent.getStringExtra("name").toString()
+        userId = intent.getIntExtra("id", 0)
 
         setBottomNavigation()
 
@@ -63,22 +67,9 @@ class MainActivity : AppCompatActivity() {
         binding.mainBottomNav.setOnItemReselectedListener {  }
     }
 
-    /*
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragContainer, fragment)
-            .commit()
-    }
-*/
-
     fun showBottomNavigationView(){
         binding.mainBottomNav.visibility = View.VISIBLE
         binding.goHome.visibility = View.VISIBLE
-    }
-
-    fun showToolbarView(){
-        binding.toolbar.visibility = View.VISIBLE
     }
 
     fun hideBottomNavigationView(){
@@ -86,8 +77,12 @@ class MainActivity : AppCompatActivity() {
         binding.goHome.visibility = View.GONE
     }
 
-    fun hideToolbarView(){
-        binding.toolbar.visibility = View.GONE
+    fun getUserName() : String {
+        return userName
+    }
+
+    fun getUserId() : Int {
+        return userId
     }
 
 }
