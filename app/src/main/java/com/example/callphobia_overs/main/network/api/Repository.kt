@@ -2,6 +2,7 @@ package com.example.callphobia_overs.main.network.api
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.callphobia_overs.main.network.models.EmailCodeCheck
 import com.example.callphobia_overs.main.network.models.Login
 import com.example.callphobia_overs.main.network.models.LoginResponse
 import com.example.callphobia_overs.main.network.models.MembershipResponse
@@ -17,7 +18,6 @@ class Repository @Inject constructor(private val api : RingApi, private val call
     suspend fun loginServer(userId: String, userPw: String) : Result<LoginResponse> {
         val result = api.login(Login(userId, userPw))
         Log.d(LOG, "사용자아이디, 비번 : $userId, $userPw")
-        //val result = api.login(userId, userPw)
 
         if (result.isSuccessful) {
             Log.d(LOG, "로그인 통신성공")
@@ -28,10 +28,23 @@ class Repository @Inject constructor(private val api : RingApi, private val call
         return Result.Error(result.message())
     }
 
+    /**이메일 인증 코드*/
     suspend fun memberShipEmailCheck(userEmail: String) : Result<Unit> {
         val result = api.checkMail(userEmail)
 
         if(result.isSuccessful){
+            Log.d(LOG,"이메일로 코드 보내기 성공")
+            return Result.Success(Unit)
+        }
+        return Result.Error(result.message())
+    }
+
+    /**이메일 인증코드 확인 -> 회원가입 완료*/
+    suspend fun memberShipEmailCodeCheck(userEmail: String, userCode : Int) : Result<Unit> {
+        val result = api.checkCode(EmailCodeCheck(userEmail, userCode))
+
+        if(result.isSuccessful){
+            Log.d(LOG,"회원가입 성공")
             return Result.Success(Unit)
         }
         return Result.Error(result.message())
