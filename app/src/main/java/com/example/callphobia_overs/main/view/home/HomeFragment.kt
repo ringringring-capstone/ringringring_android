@@ -20,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.FragmentHomeBinding
 import com.example.callphobia_overs.main.base.BaseFragment
+import com.example.callphobia_overs.main.network.api.Repository
 import com.example.callphobia_overs.main.network.viewmodel.DataViewModel
 import com.example.callphobia_overs.main.view.MainActivity
 import com.example.callphobia_overs.main.view.practicecall.CallingFragment
@@ -30,13 +31,14 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val vm : DataViewModel by activityViewModels()
+    @Inject lateinit var repository : Repository
     private val LOG = "homefragment"
-    private var name : String = ""
 
     override fun initClick() { //뭘 누르던간 다 전화통화 화면으로 이동해야함
 
@@ -63,24 +65,16 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        vm.userName.observe(this, Observer {
-            binding.groupHomeBanner.textUserWelcome.text = it.toString()
-        })
+        showBanner((requireActivity() as MainActivity).getUserName())
         bottomViewShow()
         weekChartShow()
         monthChartShow()
         audioPermission()
     }
 
-    /*
-    override fun onResume() {
-        super.onResume()
-        vm.userName.observe(this, Observer {
-            name = it.toString()
-            Log.d(LOG,name)
-        })
+    private fun showBanner(name : String){
+        binding.groupHomeBanner.textUserWelcome.text = "${name}님,\n안녕하세요 😊"
     }
-*/
 
     private fun bottomViewShow(){
         val navController = findNavController()
