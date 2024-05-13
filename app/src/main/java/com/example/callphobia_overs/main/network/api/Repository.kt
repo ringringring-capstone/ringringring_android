@@ -39,12 +39,12 @@ class Repository @Inject constructor(private val api : RingApi, private val call
         return Result.Error(result.message())
     }
 
-    /**이메일 인증코드 확인 -> 회원가입 완료*/
+    /**이메일 인증코드 확인 */
     suspend fun memberShipEmailCodeCheck(userEmail: String, userCode : Int) : Result<Unit> {
         val result = api.checkCode(EmailCodeCheck(userEmail, userCode))
 
         if(result.isSuccessful){
-            Log.d(LOG,"회원가입 성공")
+            Log.d(LOG,"인증 완료")
             return Result.Success(Unit)
         }
         return Result.Error(result.message())

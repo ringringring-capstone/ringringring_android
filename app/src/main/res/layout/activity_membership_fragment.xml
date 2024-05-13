@@ -40,7 +40,6 @@
             android:background="@drawable/background_btn_lightgray"
             android:fontFamily="@font/ibm_plexsans_kr_semibold"
             android:text="회원가입"
-            android:enabled="false"
             android:textColor="@color/white"
             android:textSize="18sp"/>
     </LinearLayout>

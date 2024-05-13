@@ -40,10 +40,11 @@ class membershipActivity : AppCompatActivity() {
     }
 
     private fun initView(){
-        if(codeCheck){ //메일 인증 완료 되었을때만, 버튼 활성화 시키기
-            binding.btnMembership.setBackgroundResource(R.drawable.background_btn_maincolor)
-            binding.btnMembership.isEnabled = true
-        }
+        //if(codeCheck){ //메일 인증 완료 되었을때만, 버튼 활성화 시키기
+            //binding.btnMembership.setBackgroundResource(R.drawable.background_btn_maincolor)
+            //binding.btnMembership.isEnabled = true
+        //}
+        binding.btnMembership.isClickable = false // 클릭 일단 못하게
     }
 
     private fun initClick(){
@@ -75,12 +76,14 @@ class membershipActivity : AppCompatActivity() {
 
                 CoroutineScope(Dispatchers.IO).launch {
                     if(email.isNotEmpty() && code.isNotEmpty()){
-                        result = vm.memberShipMailCodeCheck(email, code.toInt())
+                        Log.d(LOG, code)
+                        result = vm.memberShipMailCodeCheck(email,code.toInt())
                     }
 
                     if(result){
                         runOnUiThread {
-                            codeCheck = true
+                            binding.btnMembership.setBackgroundResource(R.drawable.background_btn_maincolor)
+                            binding.btnMembership.isClickable = true
                             Toast.makeText(this@membershipActivity, "이메일 인증이 완료되었어요.", Toast.LENGTH_SHORT).show()
                         }
                     } else {
@@ -89,24 +92,25 @@ class membershipActivity : AppCompatActivity() {
                 }
             }
 
-            if(codeCheck){
-                btnMembership.setOnClickListener { //회원가입 버튼 클릭시
-                    val name = groupMembershipName.etUserName.text.toString()
-                    val email = groupMembershipIdpw.etUserEmail.text.toString()
-                    val pw = groupMembershipIdpw.etUserPwd.text.toString()
+            btnMembership.setOnClickListener { //회원가입 버튼 클릭시
+                Log.d(LOG,"회원가입 버튼 클릭")
+                val name = groupMembershipName.etUserName.text.toString()
+                val email = groupMembershipIdpw.etUserEmail.text.toString()
+                val pw = groupMembershipIdpw.etUserPwd.text.toString()
 
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val result = vm.memberShip(name, email, pw)
+                CoroutineScope(Dispatchers.IO).launch {
+                    val result = vm.memberShip(name, email, pw)
+                    Log.d(LOG,"회원가입 성공여부" + result.toString())
 
-                        if(result){
-                            runOnUiThread {
-                                val intent = Intent(this@membershipActivity, membershipComplete::class.java)
-                                startActivity(intent)
-                            }
+                    if(result){
+                        runOnUiThread {
+                            val intent = Intent(this@membershipActivity, membershipComplete::class.java)
+                            startActivity(intent)
                         }
                     }
                 }
             }
+
         }
 
         binding.btnBackLogin.setOnClickListener {

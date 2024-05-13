@@ -30,14 +30,14 @@ interface RingApi {
         @Body memberShip : SendMembership
     ) : Response<MembershipResponse>
 
-    @GET("/emailcheck/{email}") /**이메일 유효 체크 */
+    @GET("/mailsender/{email}") /**이메일로 인증번호 보내기 */
     @Headers("Content-Type: application/json")
     suspend fun checkMail(
         @Path("email") email : String
     ) : Response<Unit>
 
     @POST("/codecheck") /**메일 인증 코드 유효성 검사*/
-    @Headers("Content-Type : application/json")
+    @Headers("Content-Type: application/json")
     suspend fun checkCode(
         @Body emailCodeCheck: EmailCodeCheck
     ) : Response<Unit>
