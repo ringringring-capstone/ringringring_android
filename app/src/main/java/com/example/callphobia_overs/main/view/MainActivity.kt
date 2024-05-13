@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.ActivityMainBinding
+import com.example.callphobia_overs.main.core.Application
 import com.example.callphobia_overs.main.view.checklist.CheckListResultFragment
 import com.example.callphobia_overs.main.view.home.HomeFragment
 import com.example.callphobia_overs.main.view.setting.SettingFragment
@@ -46,7 +47,18 @@ class MainActivity : AppCompatActivity() {
         binding.mainBottomNav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.fragment_checkList -> {
-                    navController.navigate(R.id.checkListResultFragment)
+                    //val checkListSharedPreferences = getSharedPreferences("checkList", MODE_PRIVATE)
+                    //val isCheck = checkListSharedPreferences.getBoolean("isCheck", false)
+
+                    val isCheck = Application.preferManager.getIsCheck("checkList")
+                    Log.d(LOG,isCheck.toString())
+
+                    if(isCheck){
+                        navController.navigate(R.id.checkListResultFragment)
+                    } else {
+                        navController.navigate(R.id.checkListNoDataFragment)
+                    }
+
                 }
                 R.id.fragment_setting -> {
                     //changeFragment(SettingFragment())

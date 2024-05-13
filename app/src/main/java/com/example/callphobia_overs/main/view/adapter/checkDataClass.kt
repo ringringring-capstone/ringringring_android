@@ -1,5 +1,6 @@
 package com.example.callphobia_overs.main.view.adapter
 
 data class checkDataClass(
-    val content : String
+    val content : String,
+    var isCheck : Boolean = false
 )

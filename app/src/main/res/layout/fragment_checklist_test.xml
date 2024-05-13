@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/ibm_plexsans_kr_bold"
         android:text="@string/checklist_title"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textColor="@color/black"/>
 
     <ListView
@@ -31,6 +31,7 @@
         android:dividerHeight="10dp"
         android:choiceMode="multipleChoice"
         android:layout_weight="1"/>
+
 
     <Button
         android:id="@+id/btn_checklist_result"

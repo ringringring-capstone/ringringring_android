@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_homeFragment_to_missionMainFragment"
             app:destination="@id/missionMainFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_checkListNoDataFragment"
+            app:destination="@id/checkListNoDataFragment" />
     </fragment>
 
     <fragment
@@ -38,6 +41,10 @@
         <action
             android:id="@+id/action_checkListResultFragment_to_checkListTestFragment"
             app:destination="@id/checkListTestFragment" />
+        <argument
+            android:name="checkListResult"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
 
     <fragment
@@ -98,6 +105,11 @@
         <action
             android:id="@+id/action_checkListTestFragment_to_checkListResultFragment"
             app:destination="@id/checkListResultFragment" />
+
+        <argument
+            android:name="checkListResult"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
 
     <fragment
@@ -112,5 +124,13 @@
         <action
             android:id="@+id/action_callRecordsFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkListNoDataFragment"
+        android:name="com.example.callphobia_overs.main.view.checklist.CheckListNoDataFragment"
+        android:label="CheckListNoDataFragment" >
+        <action
+            android:id="@+id/action_checkListNoDataFragment_to_checkListTestFragment"
+            app:destination="@id/checkListTestFragment" />
     </fragment>
 </navigation>

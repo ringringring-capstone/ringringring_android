@@ -1,12 +1,14 @@
 package com.example.callphobia_overs.main.view.member
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.callphobia_overs.databinding.ActivityLoginFragmentBinding
+import com.example.callphobia_overs.main.core.Application
 import com.example.callphobia_overs.main.network.api.Repository
 import com.example.callphobia_overs.main.network.api.Result
 import com.example.callphobia_overs.main.network.viewmodel.DataViewModel
@@ -49,6 +51,7 @@ class loginActivity : AppCompatActivity() {
                                     putExtra("name", result.data.name)
                                     putExtra("id", result.data.id)
                                 }
+
                             startActivity(intent)
                         }
 
