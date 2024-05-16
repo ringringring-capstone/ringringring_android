@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_white_round"
+    android:layout_marginHorizontal="35dp"
+    android:paddingVertical="5dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:fontFamily="@font/ibm_plexsans_kr_medium"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:text="통화를 종료하시겠어요?"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/btn_shutdown_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_round_maincolor"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:fontFamily="@font/ibm_plexsans_kr_medium"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="3dp"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/btn_shutdown_refuse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_btn_border_maincolor"
+            android:text="취소"
+            android:fontFamily="@font/ibm_plexsans_kr_medium"
+            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="3dp"
+            android:textSize="17sp"/>
+
+    </LinearLayout>
+</LinearLayout>
