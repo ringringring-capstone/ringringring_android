@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState == null){
             binding.mainBottomNav.selectedItemId = R.id.fragment_home
         }
+
+        binding.mainBottomNav.itemIconTintList = null
     }
 
     private fun setBottomNavigation(){

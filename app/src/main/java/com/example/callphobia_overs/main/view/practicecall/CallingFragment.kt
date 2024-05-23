@@ -142,7 +142,9 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
 
     override fun PositiveBtnClicked() {
         val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
-            callTitle = "테스트용", callContent = resources.getString(R.string.callRecord_content_test))
+            callTitle = "테스트용",
+            callContent = resources.getString(R.string.callRecord_content_test),
+            callTime = pauseTime/1000)
 
         navController.navigate(action)
     }
