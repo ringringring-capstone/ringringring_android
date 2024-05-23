@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling), AlertDialogInterface {
     private lateinit var speechRecognizer: SpeechRecognizer
     private val LOG="calling"
+    private var pauseTime = 0L //통화시간 일시정지시
     private var callHistory : String = "" //통화 내용을 누적
     private lateinit var navController: NavController
 
@@ -32,7 +33,7 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
     }
 
     override fun initClick() {
-        binding.btnStopCall.setOnClickListener {
+        binding.btnStopCall.setOnClickListener { //통화 끊기 버튼
             saveRecords()
         }
 
@@ -53,6 +54,9 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
 
 
     private fun saveRecords() {
+        pauseTime = SystemClock.elapsedRealtime() - binding.timerCallTime.base
+        Log.d("tttttt", (pauseTime/1000).toString())
+        binding.timerCallTime.stop() //시간 잠깐 멈춰주기
         CustomAlertDialog(requireContext(), this).show()
 
         /*
@@ -144,6 +148,8 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
     }
 
     override fun NegativeBtnClicked() {
+        binding.timerCallTime.base = SystemClock.elapsedRealtime() - pauseTime
+        binding.timerCallTime.start() //타이머 재시작
         Toast.makeText(requireContext(),"통화를 계속 이어갈게요",Toast.LENGTH_SHORT).show()
     }
 
