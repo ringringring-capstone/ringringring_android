@@ -69,7 +69,7 @@ class Repository @Inject constructor(private val api : RingApi, private val call
     }
 
     fun callRecordDelete(callRecords: CallRecords){
-        callDao.insertCall(callRecords)
+        callDao.delete(callRecords)
     }
 
     fun callRecordAllData() : LiveData<List<CallRecords>> {
