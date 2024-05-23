@@ -35,10 +35,10 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/charts_user_percentage"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="45dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

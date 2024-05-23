@@ -124,7 +124,11 @@
         <action
             android:id="@+id/action_callRecordsFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_callRecordsFragment_to_callRecordsReadMoreFragment"
+            app:destination="@id/callRecordsReadMoreFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/checkListNoDataFragment"
         android:name="com.example.callphobia_overs.main.view.checklist.CheckListNoDataFragment"
@@ -132,5 +136,14 @@
         <action
             android:id="@+id/action_checkListNoDataFragment_to_checkListTestFragment"
             app:destination="@id/checkListTestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/callRecordsReadMoreFragment"
+        android:name="com.example.callphobia_overs.main.view.setting.CallRecordsReadMoreFragment"
+        android:label="CallRecordsReadMoreFragment" >
+        <action
+            android:id="@+id/action_callRecordsReadMoreFragment_to_callRecordsFragment"
+            app:destination="@id/callRecordsFragment" />
     </fragment>
 </navigation>

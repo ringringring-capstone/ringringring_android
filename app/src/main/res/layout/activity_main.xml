@@ -39,7 +39,6 @@
       app:fabSize="normal"
       app:tint="@color/white"
       app:fabCustomSize="70dp"
+      app:itemActiveIndicatorStyle="@null"
       app:layout_anchor="@id/main_bottom_nav"/>
-
-
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

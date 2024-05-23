@@ -11,6 +11,12 @@
     android:background="@color/background_color_light_gray"
     tools:context=".main.view.setting.CallRecordsFragment">
 
+    <Toolbar
+        android:id="@+id/toolbar_records"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_call_records"
         android:layout_width="match_parent"
@@ -18,5 +24,6 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
         tools:listitem="@layout/row_calling_history"/>
+
 </LinearLayout>
 </layout>

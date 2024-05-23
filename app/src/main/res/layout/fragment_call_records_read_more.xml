@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".main.view.setting.CallRecordsReadMoreFragment"
+    android:orientation="vertical">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_history_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="통화내역 제목"
+                android:fontFamily="@font/ibm_plexsans_kr_semibold"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <TextView
+                android:id="@+id/text_history_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="통화내역 내용"
+                android:fontFamily="@font/ibm_plexsans_kr_regular"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+</layout>

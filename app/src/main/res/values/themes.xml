@@ -14,4 +14,9 @@
         <item name="fontFamily">@font/ibm_plexsans_kr_regular</item>
     </style>
 
+    <!--
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/ibm_plexsans_kr_regular</item>
+    </style>
+-->
 </resources>
