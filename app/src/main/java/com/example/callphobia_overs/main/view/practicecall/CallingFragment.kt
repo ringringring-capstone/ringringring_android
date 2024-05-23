@@ -1,37 +1,39 @@
 package com.example.callphobia_overs.main.view.practicecall
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.text.Layout.Directions
 import android.util.Log
-import androidx.core.content.ContextCompat
+import android.widget.Toast
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.callphobia_overs.R
 import com.example.callphobia_overs.databinding.FragmentCallingBinding
+import com.example.callphobia_overs.main.base.AlertDialogInterface
 import com.example.callphobia_overs.main.base.BaseFragment
-import com.example.callphobia_overs.main.view.MainActivity
+import com.example.callphobia_overs.main.base.CustomAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling) {
+class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling), AlertDialogInterface {
     private lateinit var speechRecognizer: SpeechRecognizer
     private val LOG="calling"
     private var callHistory : String = "" //통화 내용을 누적
+    private lateinit var navController: NavController
+
+    override fun initView() {
+        navController = requireActivity().findNavController(R.id.fragContainer)
+        callTimer()
+    }
 
     override fun initClick() {
-        val navController = requireActivity().findNavController(R.id.fragContainer)
-
         binding.btnStopCall.setOnClickListener {
-            val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
-                callTitle = "테스트용", callContent = callHistory)
-
-            navController.navigate(action)
+            saveRecords()
         }
 
         binding.btnToSpeak.setOnClickListener { //사용자 음성 인식 시작
@@ -42,13 +44,36 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
         }
     }
 
-    override fun initView() {
-        callTimer()
-    }
+    /** 아래부터 관련 함수들 */
 
     private fun callTimer(){
         binding.timerCallTime.base = SystemClock.elapsedRealtime()
         binding.timerCallTime.start()
+    }
+
+
+    private fun saveRecords() {
+        CustomAlertDialog(requireContext(), this).show()
+
+        /*
+        val builder = AlertDialog.Builder(context).apply {
+            setTitle("통화를 종료하시겠어요?")
+            setMessage("나가면 현재 통화 내용을 이어갈 수 없어요.")
+
+            setPositiveButton("확인",DialogInterface.OnClickListener { dialog, which ->
+                val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
+                    callTitle = "테스트용", callContent = callHistory)
+
+                navController.navigate(action)
+            })
+            setNegativeButton("취소",DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(requireContext(),"통화를 계속 이어갈게",Toast.LENGTH_SHORT).show()
+            })
+            show()
+        }
+        builder.create()
+        */
+
     }
 
     private fun recordUserVoice(): Intent {
@@ -109,6 +134,17 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
 
         }
 
+    }
+
+    override fun PositiveBtnClicked() {
+        val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
+            callTitle = "테스트용", callContent = resources.getString(R.string.callRecord_content_test))
+
+        navController.navigate(action)
+    }
+
+    override fun NegativeBtnClicked() {
+        Toast.makeText(requireContext(),"통화를 계속 이어갈게요",Toast.LENGTH_SHORT).show()
     }
 
 }

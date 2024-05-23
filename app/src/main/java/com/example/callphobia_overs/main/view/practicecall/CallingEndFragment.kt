@@ -27,14 +27,21 @@ class CallingEndFragment : BaseFragment<FragmentCallingEndBinding>(R.layout.frag
         }
 
         binding.btnSaveCallHistory.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                vm.callRecordInsert(CallRecords("자전거 환불 전화 (테스트데이터)", resources.getString(R.string.callRecord_content_test)))
+            Log.d(LOG, args.callTitle)
+
+            if(args.callContent.isNotEmpty()){
+                lifecycleScope.launch(Dispatchers.IO) {
+                    vm.callRecordInsert(CallRecords("자전거 환불 전화 (테스트데이터)", resources.getString(R.string.callRecord_content_test)))
+                }
                 Toast.makeText(requireContext(),"통화 내용을 저장했어요.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(),"통화 내용한 내용이 없어 저장할 수 없어요.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     override fun initView() {
+
         Log.d(LOG, args.callTitle)
         Log.d(LOG, args.callContent)
     }
