@@ -14,7 +14,9 @@ import com.example.callphobia_overs.main.network.models.roomDB.CallRecords
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecordsDao
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val api : RingApi, private val callDao: CallRecordsDao) {
+class Repository @Inject constructor(private val api : RingApi,
+                                     private val interceptorApi: RingInterceptorApi,
+                                     private val callDao: CallRecordsDao) {
 
     private val LOG = "repository"
 
@@ -67,7 +69,7 @@ class Repository @Inject constructor(private val api : RingApi, private val call
 
     /**통화 시간 서버로 보내기*/
     suspend fun saveCallTime(userId: Int, callTime : Int) : Result<SaveWeekCallTimeResponse>{
-        val result = api.saveCallTime(SendSaveWeekCallTime(userId, callTime))
+        val result = interceptorApi.saveCallTime(SendSaveWeekCallTime(userId, callTime))
 
         if(result.isSuccessful){
             Log.d(LOG,"서버로 통화시간 보내기 성공")
@@ -79,7 +81,7 @@ class Repository @Inject constructor(private val api : RingApi, private val call
 
     /**주간 통계 불러오기*/
     suspend fun weekPracticeTime(email : String) : Result<WeeklyStatistics> {
-        val result = api.weekPracticeTime(email)
+        val result = interceptorApi.weekPracticeTime(email)
 
         if(result.isSuccessful){
             Log.d(LOG,"주간통계 가져오기 성공")

@@ -19,7 +19,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 
-//서버 <-> 클라이언트 간의 통신 api 정의
+/**JWT 토큰이 필요하지 않은 API 정의*/
 interface RingApi {
 
     /** 로그인 */
@@ -50,20 +50,6 @@ interface RingApi {
         @Body emailCodeCheck: EmailCodeCheck
     ) : Response<Unit>
 
-    /**통화 시간 저장*/
-    @PUT("/save")
-    @Headers("Content-Type: application/json")
-    suspend fun saveCallTime(
-        @Body sendSaveWeekCallTime: SendSaveWeekCallTime
-    ) : Response<SaveWeekCallTimeResponse>
-
-
-    /**메인화면 -> 주간 연습 통계 api*/
-    @GET("/usage/{email}")
-    @Headers("Content-Type: application/json")
-    suspend fun weekPracticeTime(
-        @Path("email") email : String
-    ) : Response<WeeklyStatistics>
 
 
 }
