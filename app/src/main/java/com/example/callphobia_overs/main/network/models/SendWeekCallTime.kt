@@ -17,6 +17,6 @@ data class SaveWeekCallTimeResponse(
     @SerializedName("callTime")
     val callTime: Int,
     @SerializedName("message")
-    val message : Int
+    val message : String
 )
 

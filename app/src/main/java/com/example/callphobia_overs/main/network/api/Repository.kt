@@ -6,7 +6,10 @@ import com.example.callphobia_overs.main.network.models.EmailCodeCheck
 import com.example.callphobia_overs.main.network.models.Login
 import com.example.callphobia_overs.main.network.models.LoginResponse
 import com.example.callphobia_overs.main.network.models.MembershipResponse
+import com.example.callphobia_overs.main.network.models.SaveWeekCallTimeResponse
 import com.example.callphobia_overs.main.network.models.SendMembership
+import com.example.callphobia_overs.main.network.models.SendSaveWeekCallTime
+import com.example.callphobia_overs.main.network.models.WeeklyStatistics
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecords
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecordsDao
 import javax.inject.Inject
@@ -61,6 +64,33 @@ class Repository @Inject constructor(private val api : RingApi, private val call
         Log.d(LOG, "회원가입 실패")
         return Result.Error(result.message())
     }
+
+    /**통화 시간 서버로 보내기*/
+    suspend fun saveCallTime(userId: Int, callTime : Int) : Result<SaveWeekCallTimeResponse>{
+        val result = api.saveCallTime(SendSaveWeekCallTime(userId, callTime))
+
+        if(result.isSuccessful){
+            Log.d(LOG,"서버로 통화시간 보내기 성공")
+            return Result.Success(result.body()!!)
+        }
+        Log.d(LOG,"서버로 통화시간 보내기 실패")
+        return Result.Error(result.message())
+    }
+
+    /**주간 통계 불러오기*/
+    suspend fun weekPracticeTime(email : String) : Result<WeeklyStatistics> {
+        val result = api.weekPracticeTime(email)
+
+        if(result.isSuccessful){
+            Log.d(LOG,"주간통계 가져오기 성공")
+            return Result.Success(result.body()!!)
+        }
+        Log.d(LOG,"주간통계 가져오기 실패")
+        return Result.Error(result.message())
+    }
+
+
+
 
     /**DB 관련 부분*/
 

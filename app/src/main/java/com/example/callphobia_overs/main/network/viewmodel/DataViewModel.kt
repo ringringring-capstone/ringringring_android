@@ -51,6 +51,12 @@ class DataViewModel @Inject constructor(private val repository: Repository, appl
         return result is Result.Success
     }
 
+    /**통화 시간 보내기*/
+    suspend fun saveCallTime(userId : Int, callTime : Int) : Boolean {
+        val result = repository.saveCallTime(userId, callTime)
+        return result is Result.Success
+    }
+
 
     /** DB 부분 */
     fun callRecordInsert(callRecords: CallRecords) {

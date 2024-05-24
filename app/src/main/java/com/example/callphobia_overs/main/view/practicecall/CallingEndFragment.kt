@@ -59,7 +59,5 @@ class CallingEndFragment : BaseFragment<FragmentCallingEndBinding>(R.layout.frag
 
         }
 
-
-
     }
 }

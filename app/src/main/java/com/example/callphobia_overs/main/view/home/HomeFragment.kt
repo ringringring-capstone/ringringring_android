@@ -88,6 +88,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
 
+    /** 통계 부분 */
 
     private fun weekChartShow(){
         val pieChart : PieChart = binding.homeMyPracticeChart.chartsMyPracticeWeek

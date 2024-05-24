@@ -10,6 +10,7 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.util.Log
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.callphobia_overs.R
@@ -17,15 +18,23 @@ import com.example.callphobia_overs.databinding.FragmentCallingBinding
 import com.example.callphobia_overs.main.base.AlertDialogInterface
 import com.example.callphobia_overs.main.base.BaseFragment
 import com.example.callphobia_overs.main.base.CustomAlertDialog
+import com.example.callphobia_overs.main.network.viewmodel.DataViewModel
+import com.example.callphobia_overs.main.view.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling), AlertDialogInterface {
     private lateinit var speechRecognizer: SpeechRecognizer
-    private val LOG="calling"
+
+    private val vm : DataViewModel by activityViewModels()
     private var pauseTime = 0L //통화시간 일시정지시
     private var callHistory : String = "" //통화 내용을 누적
     private lateinit var navController: NavController
+    private val LOG="calling"
 
     override fun initView() {
         navController = requireActivity().findNavController(R.id.fragContainer)
@@ -45,6 +54,8 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
         }
     }
 
+
+
     /** 아래부터 관련 함수들 */
 
     private fun callTimer(){
@@ -52,31 +63,11 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
         binding.timerCallTime.start()
     }
 
-
     private fun saveRecords() {
         pauseTime = SystemClock.elapsedRealtime() - binding.timerCallTime.base
         Log.d("tttttt", (pauseTime/1000).toString())
         binding.timerCallTime.stop() //시간 잠깐 멈춰주기
         CustomAlertDialog(requireContext(), this).show()
-
-        /*
-        val builder = AlertDialog.Builder(context).apply {
-            setTitle("통화를 종료하시겠어요?")
-            setMessage("나가면 현재 통화 내용을 이어갈 수 없어요.")
-
-            setPositiveButton("확인",DialogInterface.OnClickListener { dialog, which ->
-                val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
-                    callTitle = "테스트용", callContent = callHistory)
-
-                navController.navigate(action)
-            })
-            setNegativeButton("취소",DialogInterface.OnClickListener { dialog, which ->
-                Toast.makeText(requireContext(),"통화를 계속 이어갈게",Toast.LENGTH_SHORT).show()
-            })
-            show()
-        }
-        builder.create()
-        */
 
     }
 
@@ -141,12 +132,26 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
     }
 
     override fun PositiveBtnClicked() {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.d(LOG, "서버로 전화 통화 시간 전송 시작")
+            val id = (requireActivity() as MainActivity).getUserId()
+            val result = vm.saveCallTime(id, (pauseTime/1000).toInt())
+
+            if(result){
+                Log.d(LOG, "통화시간 서버로 보내기 성공")
+            } else {
+                Log.d(LOG, "통화시간 서버로 보내기 실패")
+            }
+        }
+
         val action = CallingFragmentDirections.actionCallingFragmentToCallingEndFragment(
             callTitle = "테스트용",
             callContent = resources.getString(R.string.callRecord_content_test),
-            callTime = pauseTime/1000)
+            callTime = pauseTime/1000 )
 
         navController.navigate(action)
+
     }
 
     override fun NegativeBtnClicked() {
