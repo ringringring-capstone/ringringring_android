@@ -8,6 +8,9 @@ import com.example.callphobia_overs.main.network.models.SaveWeekCallTimeResponse
 import com.example.callphobia_overs.main.network.models.SendMembership
 import com.example.callphobia_overs.main.network.models.SendSaveWeekCallTime
 import com.example.callphobia_overs.main.network.models.WeeklyStatistics
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -20,6 +23,7 @@ import retrofit2.http.Query
 
 
 /**JWT 토큰이 필요하지 않은 API 정의*/
+
 interface RingApi {
 
     /** 로그인 */
@@ -49,7 +53,5 @@ interface RingApi {
     suspend fun checkCode(
         @Body emailCodeCheck: EmailCodeCheck
     ) : Response<Unit>
-
-
 
 }

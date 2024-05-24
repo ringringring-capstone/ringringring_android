@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
+    kotlin("plugin.serialization") version "1.5.0"
     id ("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
@@ -117,6 +118,8 @@ dependencies {
     //hlit
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+
 
     //lottie (벡터기반 애니메이션)
     implementation("com.airbnb.android:lottie:$lottieVersion")

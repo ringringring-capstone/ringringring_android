@@ -1,10 +1,11 @@
 package com.example.callphobia_overs.main.core
 
 import android.app.Application
+import dagger.Provides
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class Application  : Application(){
+class Application : Application(){
 
     companion object{
         lateinit var preferManager: SharedPreference

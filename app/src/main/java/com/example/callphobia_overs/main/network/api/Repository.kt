@@ -10,12 +10,15 @@ import com.example.callphobia_overs.main.network.models.SaveWeekCallTimeResponse
 import com.example.callphobia_overs.main.network.models.SendMembership
 import com.example.callphobia_overs.main.network.models.SendSaveWeekCallTime
 import com.example.callphobia_overs.main.network.models.WeeklyStatistics
+import com.example.callphobia_overs.main.network.models.retrofitModel
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecords
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecordsDao
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val api : RingApi,
-                                     private val interceptorApi: RingInterceptorApi,
+/**어떤 retrofit을 사용하는지 명시해줘야함 -> @retrofitModel.NoInterceptorRetrofit 이 부분들*/
+class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit private val api : RingApi,
+                                     @retrofitModel.InterceptorRetrofit private val interceptorApi: RingInterceptorApi,
                                      private val callDao: CallRecordsDao) {
 
     private val LOG = "repository"

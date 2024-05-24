@@ -65,14 +65,13 @@ object retrofitModel {
             .build()
     }
 
-
     @NoInterceptorRetrofit
     @Singleton
     @Provides
-    fun ringRetrofit() : RingApi {
+    fun ringRetrofit(@NoInterceptorOkHttpClient client: OkHttpClient) : RingApi {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient())
+            .client(client)
             .baseUrl(baseUrl)
             .build()
             .create(RingApi::class.java)
@@ -81,10 +80,10 @@ object retrofitModel {
     @InterceptorRetrofit
     @Singleton
     @Provides
-    fun ringInterceptorRetrofit() : RingInterceptorApi {
+    fun ringInterceptorRetrofit(@InterceptorOkHttpClient client: OkHttpClient) : RingInterceptorApi {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient())
+            .client(client)
             .baseUrl(baseUrl)
             .build()
             .create(RingInterceptorApi::class.java)
