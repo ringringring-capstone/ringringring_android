@@ -1,5 +1,6 @@
 package com.example.callphobia_overs.main.network.models
 
+import com.example.callphobia_overs.main.network.api.AuthInterceptor
 import com.example.callphobia_overs.main.network.api.RingApi
 import com.example.callphobia_overs.main.network.api.RingInterceptorApi
 import dagger.Module
@@ -25,7 +26,7 @@ object retrofitModel {
     private val baseUrl = "http://3.36.125.87:9090" //4.14일 기준 임시로 작성해둠
 
     private val logging = HttpLoggingInterceptor().apply{
-        level = HttpLoggingInterceptor.Level.BODY //okhttp 로그 추가
+        level = HttpLoggingInterceptor.Level.BASIC //okhttp 로그 추가
     }
 
     /** JWTToken이 필요한 api와, 그렇지 않은 api 연결을 위해
@@ -61,6 +62,7 @@ object retrofitModel {
     @Provides
     fun OkHttpClientInterceptor() : OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
             .addInterceptor(logging)
             .build()
     }
@@ -77,6 +79,7 @@ object retrofitModel {
             .create(RingApi::class.java)
     }
 
+    /**여기에만 jwt 토큰 넣어주기*/
     @InterceptorRetrofit
     @Singleton
     @Provides

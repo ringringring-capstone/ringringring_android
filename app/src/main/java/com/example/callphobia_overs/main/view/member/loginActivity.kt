@@ -50,14 +50,15 @@ class loginActivity : AppCompatActivity() {
                                 .apply {
                                     putExtra("name", result.data.name)
                                     putExtra("id", result.data.id)
+                                    putExtra("email", result.data.email)
                                 }
-
                             startActivity(intent)
                         }
 
                         is Result.Error -> Log.d(LOG, "로그인 실패")
                         is Result.Exception -> Log.d(LOG, "로그인 예외 발생")
                     }
+
                 }
             }
         }

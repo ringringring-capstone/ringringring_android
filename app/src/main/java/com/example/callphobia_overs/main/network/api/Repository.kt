@@ -2,6 +2,7 @@ package com.example.callphobia_overs.main.network.api
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.callphobia_overs.main.core.Application
 import com.example.callphobia_overs.main.network.models.EmailCodeCheck
 import com.example.callphobia_overs.main.network.models.Login
 import com.example.callphobia_overs.main.network.models.LoginResponse
@@ -29,9 +30,12 @@ class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit privat
 
         if (result.isSuccessful) {
             Log.d(LOG, "로그인 통신성공")
+            Application.preferManager.token =
+                result.headers()["Authorization"]?.replace("Bearer","")?.trim()
+            val data = Application.preferManager.token
+            Log.d(LOG,"jwt토큰$data")
             return Result.Success(result.body()!!)
         }
-
         Log.d(LOG, "로그인 통신실패")
         return Result.Error(result.message())
     }
@@ -83,6 +87,7 @@ class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit privat
     }
 
     /**주간 통계 불러오기*/
+
     suspend fun weekPracticeTime(email : String) : Result<WeeklyStatistics> {
         val result = interceptorApi.weekPracticeTime(email)
 
@@ -95,6 +100,18 @@ class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit privat
     }
 
 
+    suspend fun testAi(id : Int) : Result<Unit> {
+        val result = interceptorApi.testAi(id)
+
+        if(result.isSuccessful){
+            Log.d(LOG, "ai api 임시 작성 요청 완료")
+            return Result.Success(Unit)
+        }
+
+        Log.d(LOG, "ai api 임시 작성 요청 완료")
+        return Result.Error(result.message())
+
+    }
 
 
     /**DB 관련 부분*/

@@ -4,15 +4,12 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.callphobia_overs.main.network.api.Repository
 import com.example.callphobia_overs.main.network.api.Result
 import com.example.callphobia_overs.main.network.models.LoginResponse
+import com.example.callphobia_overs.main.network.models.WeeklyStatistics
 import com.example.callphobia_overs.main.network.models.roomDB.CallRecords
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**retrofit 호출 로직
@@ -54,6 +51,16 @@ class DataViewModel @Inject constructor(private val repository: Repository, appl
     /**통화 시간 보내기*/
     suspend fun saveCallTime(userId : Int, callTime : Int) : Boolean {
         val result = repository.saveCallTime(userId, callTime)
+        return result is Result.Success
+    }
+
+    /**주간 통계*/
+    suspend fun weekPracticeTime(email: String): Result<WeeklyStatistics> {
+        return repository.weekPracticeTime(email)
+    }
+
+    suspend fun testAi(id : Int) : Boolean {
+       val result = repository.testAi(id)
         return result is Result.Success
     }
 
