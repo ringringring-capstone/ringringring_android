@@ -64,6 +64,12 @@ class DataViewModel @Inject constructor(private val repository: Repository, appl
         return result is Result.Success
     }
 
+    /**AI 응답 부분*/
+
+    suspend fun reservationAI(userSay: String): Result<String> {
+        return repository.reservationAI(userSay)
+    }
+
 
     /** DB 부분 */
     fun callRecordInsert(callRecords: CallRecords) {
