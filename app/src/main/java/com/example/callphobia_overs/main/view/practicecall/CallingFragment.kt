@@ -8,6 +8,7 @@ import android.os.SystemClock
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -25,19 +26,29 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Locale
 
 @AndroidEntryPoint
 class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_calling), AlertDialogInterface {
     private lateinit var speechRecognizer: SpeechRecognizer
+    private lateinit var textToSpeech: TextToSpeech
 
     private val vm : DataViewModel by activityViewModels()
     private var pauseTime = 0L //통화시간 일시정지시
     private var callHistory : String = "" //통화 내용을 누적
     private lateinit var navController: NavController
+
     private val LOG="calling"
 
     override fun initView() {
         navController = requireActivity().findNavController(R.id.fragContainer)
+
+        textToSpeech = TextToSpeech(requireContext()) { state ->
+            if (state != TextToSpeech.ERROR) {
+                textToSpeech.setLanguage(Locale.KOREA)
+            }
+        }
+        textToSpeech.setSpeechRate(0.9f)
         callTimer()
     }
 
@@ -53,7 +64,6 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
             speechRecognizer.startListening(recordUserVoice())
         }
     }
-
 
 
     /** 아래부터 관련 함수들 */
@@ -115,10 +125,18 @@ class CallingFragment : BaseFragment<FragmentCallingBinding>(R.layout.fragment_c
 
         override fun onResults(result: Bundle?) {
             val data = result?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+
             for(i in data!!.indices)
                 binding.textUserSay.text = data[i]
 
             callHistory = binding.textUserSay.text.toString()
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val aiAnswer = vm.reservationAI(callHistory)
+                Log.d(LOG,"AI대답 : $aiAnswer")
+                textToSpeech.speak(aiAnswer.toString(), TextToSpeech.QUEUE_FLUSH, null, null)
+                //textToSpeech.stop()
+            }
         }
 
         override fun onPartialResults(partialResults: Bundle?) {

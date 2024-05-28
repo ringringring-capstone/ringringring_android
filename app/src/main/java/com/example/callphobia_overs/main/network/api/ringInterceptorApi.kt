@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -37,5 +38,12 @@ interface RingInterceptorApi {
     suspend fun testAi(
         @Path("id") id : Int
     ) : Response<Unit>
+
+    @POST("/reservationAI")
+    @Headers("Content-Type: application/json")
+    suspend fun reservationAI(
+        @Body sentences : String
+    ) : Response<String>
+
 
 }

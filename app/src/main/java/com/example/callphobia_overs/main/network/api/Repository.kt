@@ -99,7 +99,7 @@ class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit privat
         return Result.Error(result.message())
     }
 
-
+    /**AI 부분*/
     suspend fun testAi(id : Int) : Result<Unit> {
         val result = interceptorApi.testAi(id)
 
@@ -110,7 +110,18 @@ class Repository @Inject constructor(@retrofitModel.NoInterceptorRetrofit privat
 
         Log.d(LOG, "ai api 임시 작성 요청 완료")
         return Result.Error(result.message())
+    }
 
+    suspend fun reservationAI(userSay : String) : Result<String> {
+        val result = interceptorApi.reservationAI(userSay)
+
+        if(result.isSuccessful){
+            Log.d(LOG, "응답내용 : " + result.body().toString())
+            return Result.Success(result.body()!!)
+        }
+
+        Log.d(LOG, "예약 인공지능과 연결 실패")
+        return Result.Error(result.message())
     }
 
 
